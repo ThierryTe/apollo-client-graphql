@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import apolloClient from './apolloSetup';
+import {ApolloProvider} from '@apollo/react-hooks';
+import NewVideoNotification from './components/NewVideoNotification';
+import AddVideo from './components/AddVideo';
+import VideoList from './components/VideoList';
+import LazyVideoList from './components/LazyVideoList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const  App = () =>{
+    return (
+      <ApolloProvider client={apolloClient}>
+        <NewVideoNotification/> 
+        <AddVideo/>
+        <VideoList/>
+        <LazyVideoList />
+        </ApolloProvider>
+    );
+  }
+ 
+
 
 export default App;
